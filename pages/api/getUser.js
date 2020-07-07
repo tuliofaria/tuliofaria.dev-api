@@ -12,7 +12,7 @@ const cors = initMiddleware(
 
 const apiGetUser = async (req, res) => {
     await cors(req, res)
-
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
     const data = await getUser('tuliofaria')
     res.send(data)
 }
